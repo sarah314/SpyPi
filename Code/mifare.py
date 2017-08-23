@@ -4,14 +4,9 @@ import RPi.GPIO as GPIO
 import signal
 import MFRC522
 import os
-from 
+from colors import farben
 
-# Farben für den Output
-class farben:
-    AUF = '\033[91m'
-    IN = '\033[92m'
-    END = '\033[0m'
-    
+
 continue_reading = True
 GPIO.setwarnings(False)
 
