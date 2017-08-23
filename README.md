@@ -3,17 +3,17 @@ An (un-)ethical hacking-station based on Raspberry Pi and Python.
 OS: Raspbian
 ![1503514241914](https://user-images.githubusercontent.com/31287043/29633707-69c2e620-8847-11e7-989a-b9c80488df3d.jpg)
 ## What is SpyPi?
-SpyPi is a white-hat hacking-station I've created as part of my high school graduation-work (2017). The device aims at raising awareness of data protection by letting people interactively get in touch with the topic. SpyPi provides different applications which help its user to learn about the risks of everyday tasks/activities involving technologies such as networks, contactless payment or social media. The interactive aspect allows user and SpyPi to meet at eye-level. The hacking-station is meant to be an on-going project. Its applications and the hardware can be expanded and improved by its user or creator.
+The SpyPi is a white-hat hacking-station I've created as part of my high school graduation-work (2017). The device aims at raising awareness of data protection by letting people interactively get in touch with the topic. The SpyPi provides different applications which help the user to learn about the risks of everyday tasks/activities involving technologies such as networks, contactless payment or social media. The interactive aspect allows user and SpyPi to meet at eye-level. To schoolmasterly educate about data protection would only kill interest and insight at birth. The hacking-station is meant to be an on-going project. Its applications and the hardware can be expanded and improved by the user or creator.
 
 ## (un-)ethical, what do you mean?!
-If the hacking-station in ethical or unethical is entirely dependent upon the operator. It's simply out of my control, although SpyPi is intended to be an ethical device.
+If the hacking-station in ethical or unethical is entirely dependent upon the operator. It's simply out of my control (although SpyPi is thought to be an ethical device).
 ## Hardware 
 If you are interested in the hardware please visit my website *(coming soon)*.
 
 ## Please remember 
-SpyPi is a **high school** project and was **created with very little programming** experience. Don't expect flawless code. Constructive criticism is appreciated!
+SpyPi is a **high school** project and was **created with very little programming** experience. Don't expect flawless code. Constructive criticism is appreciated! Parts of the code are written in German. I'll translate it as soon as possible.
 
-The Project is licensed under the Apache License 2.0
+The Project is licensed under the Apache License 2.0. 
 ## Okay cool, but what does it do?
 ### Network Scanner
 Gets basic information from surrounding networks like BSSID, ESSID, encryption and authentication type.
@@ -39,7 +39,7 @@ sudo python3 Bruteforce.py
 Make sure you've... 
 - installed mitmproxy, Python 3.5 or above (I suggest pyenv) and OpenSSL 1.0.2 via Jessie Backports
 - created a wireless AP following [this tutorial](https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/overview) 
-- created a text files named proxy.txt
+- created a text file named proxy.txt
 
 Open two terminal windows or split screen:
 
@@ -48,6 +48,7 @@ Window 1:
 tail -f proxy.txt
 ```
 Window 2:
+
 Set iptable rules:
 ```
 sudo iptables -F
