@@ -7,7 +7,7 @@ SpyPi is a white-hat hacking-station I've created as part of my high school grad
 ## (un-)ethical, what do you mean?!
 If the hacking-station in ethical or unethical is entirely dependent upon the operator. It's simply out of my control, although SpyPi is intended to be an ethical device.
 ## Hardware 
-If you are interested in the hardware please visit my website.
+If you are interested in the hardware please visit my website *(coming soon)*.
 
 ## Please remember 
 SpyPi is a **high school** project and was **created with very little programming** experience. Don't expect flawless code. Constructive criticism is appreciated!
