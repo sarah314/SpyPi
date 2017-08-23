@@ -14,6 +14,6 @@ def request(flow):
             myfile.write(farben.AUF + str(now) +" // " + farben.END)
             myfile.write(farben.LD + host + farben.END)
             myfile.write("\n")
-            myfile.write(farben.KG + content + farben.END)
+            myfile.write(farben.IN + content + farben.END)
             myfile.write("\n")
             myfile.write("\n")
