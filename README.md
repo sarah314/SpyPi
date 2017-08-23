@@ -1,5 +1,6 @@
 # SpyPi
 An (un-)ethical hacking-station based on Raspberry Pi and Python.
+OS: Raspbian
 ![1503514241914](https://user-images.githubusercontent.com/31287043/29633707-69c2e620-8847-11e7-989a-b9c80488df3d.jpg)
 ## What is SpyPi?
 SpyPi is a white-hat hacking-station I've created as part of my high school graduation-work (2017). The device aims at raising awareness of data protection by letting people interactively get in touch with the topic. SpyPi provides different applications which help its user to learn about the risks of everyday tasks/activities involving technologies such as networks, contactless payment or social media. The interactive aspect allows user and SpyPi to meet at eye-level. The hacking-station is meant to be an on-going project. Its applications and the hardware can be expanded and improved by its user or creator.
