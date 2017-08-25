@@ -8,7 +8,7 @@ The SpyPi is a white-hat hacking-station I've created as part of my high school 
 ## (un-)ethical, what do you mean?!
 Whether the hacking-station is ethical or unethical is entirely dependent upon the operator. It's simply out of my control (although SpyPi is thought to be an ethical device).
 ## Hardware 
-If you are interested in the hardware please visit my website *(coming soon)*.
+If you are interested in the hardware, please visit my website *(coming soon)*.
 
 ## Please remember 
 SpyPi is a **high school** project and was **created with very little programming** experience. Don't expect flawless code. Constructive criticism is appreciated! Parts of the code are written in German. I'll translate it as soon as possible.
@@ -16,16 +16,15 @@ SpyPi is a **high school** project and was **created with very little programmin
 The Project is licensed under the Apache License 2.0. 
 ## Okay cool, but what does it do?
 ### Network Scanner
-Gets basic information from surrounding networks like BSSID, ESSID, encryption and authentication type.
+Gets basic information about surrounding networks such as the BSSID, ESSID, encryption and authentication type. 
 ### Brute-Force dict.
-Allows user to attack network with a custom or pre-made password list.
+Allows user to attack a network with a custom or pre-made password list.
 ### Mifare default key attack
-Tests out if Mifare Classic 1K card uses any default read-permission keys.
+Tests out whether a Mifare Classic 1K card uses any default read-permission keys.
 ### Mitmproxy Login-Data Catcher
-Catches formular data from HTTPS POST requests by the SpyPi AP (transparent proxy) client. Every chatch is stored in a file and listed with it's host and time of request.
+Catches formular data from HTTPS POST requests by the SpyPi-AP (transparent proxy) client. Every "chatch" is stored in a file (with it's host and time of request).
 ### Twitter Data-Miner
-Mines incoming Tweets containing a string the user chooses himself. Collects Data until ```Ctrl + C```
-
+Mines incoming Tweets containing a certain string (word, hashtag...) the user chooses himself. Collects Data until ```Ctrl + C```
 ## How to use
 ### scanner.py
 ```
@@ -60,7 +59,7 @@ sudo iptables -t nat -A PREROUTING -i wlan0 -p tcp — dport 443 -j REDIRECT —
 ```
 run:
 ```
-mitmproxy ~s "/home/pi/login_proxy.py" -T --host
+mitmdump ~s "/home/pi/login_proxy.py" -T --host
 ```
 ### mifare.py
 ```
