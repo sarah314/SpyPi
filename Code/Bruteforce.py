@@ -18,7 +18,7 @@ def jumpback():
 #Auswahl ESSID
 
 def essidwahl(lessid, jumpback):
-    u = subprocess.Popen(["sudo", "python3", "scanner.py"],stdout = subprocess.PIPE, universal_newlines = True)
+    u = subprocess.Popen(["sudo", "python3", "/home/pi/SpyPi/Code/scanner.py"],stdout = subprocess.PIPE, universal_newlines = True)
     out, err = u.communicate()
     out = out.split("\n")    
     for line in out:
@@ -26,18 +26,18 @@ def essidwahl(lessid, jumpback):
             print(line)
 
     print(farben.IN + "Bitte geben Sie die ESSID des anzugreifenden Netzwerks ein..." + farben.END)
+    print(farben.LD + "Geben Sie keine Informationen von den Spalten MAC, AUTH., PROT.ein!" + farben.END)
     ssid = input(farben.IN + "ESSID: "+ farben.END)
     ssid = ssid.strip()
     
     while True:
         for line in out:
-            if len(ssid)>0:
-                if ("%s  " % ssid in line) and ("PSK" in line):
-                    os.system('clear')
-                    print (farben.IN + "Sie haben " + farben.AUF + ssid + farben.IN + " gewählt. Gutes Hacken!" + farben.END)
-                    lessid.append(ssid)
-                    time.sleep(5)
-                    return
+            if   ("%s  " % ssid in line) and len(ssid)>0 and ("PSK" in line):
+                os.system('reset')
+                print (farben.IN + "Sie haben " + farben.AUF + ssid + farben.IN + " gewählt. Happy Hacking!" + farben.END)
+                lessid.append(ssid)
+                time.sleep(5)
+                return
         jumpback()
         print (farben.AUF+ "Bitte wählen Sie eines der aufgelisteten Netzwerke!" + farben.END)
         time.sleep(2)
@@ -45,15 +45,14 @@ def essidwahl(lessid, jumpback):
         ssid = input(farben.IN + "ESSID: "  + farben.END)
 
 def woerterliste(liste, standardliste, maxLengthliste, jumpback):      
-
     os.system('reset')
     print (farben.IN + "Möchten sie Ihre Passwortliste selbst erstellen?" + farben.END)
     entscheid = input(farben.IN + "J/N? : " + farben.END).lower()
-    
     if  entscheid == "n":
         randomliste = random.sample(standardliste, 10)
         liste.extend(randomliste)
         return
+
     elif entscheid == "j":
         os.system('reset')
         print(farben.IN + "Bitte geben Sie 10 Passwörter ein, die Sie zum Angriff verwenden möchten!" + farben.END)
@@ -149,7 +148,7 @@ def wipe():
 
 standardliste = ['12345678', 'hallo123', 'mudeqobixusa', 'passwort', \
                 'mudeqobixusa', '3rjs1la7qe', '66666666',\
-                '123456789', 'starwars', 'princess','passwort1', 'arschloch', \
+                '123456789', 'starwars', 'princess','passwort1', \
                 'judihui', '11111111', 'superman', '123123123', 'schalke04', \
                 'baseball', 'football', '696969', 'trustno1', 'keahnig',
                 'wlanpasswort', 'qwertzui', 'asdfghjk', 'yxcvbnmq', 'jennifer', \

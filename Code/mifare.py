@@ -48,7 +48,6 @@ print farben.AUF + "Bitte halten Sie den RFID-Tag solange an den Leser, bis die 
 
 # Austesten der Standardpasswörter
 key = []
-sector = []
 x = 0
 while x < 64:
     for k in k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, k10, k11, k12, k13, k14:
