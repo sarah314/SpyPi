@@ -18,7 +18,7 @@ def jumpback():
 #Auswahl ESSID
 
 def essidwahl(lessid, jumpback):
-    u = subprocess.Popen(["sudo", "python3", "/home/pi/SpyPi/scanner.py"],stdout = subprocess.PIPE, universal_newlines = True)
+    u = subprocess.Popen(["sudo", "python3", "scanner.py"],stdout = subprocess.PIPE, universal_newlines = True)
     out, err = u.communicate()
     out = out.split("\n")    
     for line in out:
@@ -45,70 +45,72 @@ def essidwahl(lessid, jumpback):
         ssid = input(farben.IN + "ESSID: "  + farben.END)
 
 def woerterliste(liste, standardliste, maxLengthliste, jumpback):      
-    while True:
+
+    os.system('reset')
+    print (farben.IN + "Möchten sie Ihre Passwortliste selbst erstellen?" + farben.END)
+    entscheid = input(farben.IN + "J/N? : " + farben.END).lower()
+    
+    if  entscheid == "n":
+        randomliste = random.sample(standardliste, 10)
+        liste.extend(randomliste)
+        return
+    elif entscheid == "j":
         os.system('reset')
-        print (farben.IN + "Möchten sie Ihre Passwortliste selbst erstellen?" + farben.END)
-        entscheid = input(farben.IN + "J/N? : " + farben.END).lower()
-        
-        if  entscheid == "n":
-            randomliste = random.sample(standardliste, 10)
-            liste.extend(randomliste)
-            return
-        elif entscheid == "j":
-            os.system('reset')
-            print(farben.IN + "Bitte geben Sie 10 Passwörter ein, die Sie zum Angriff verwenden möchten!" + farben.END)
-            x = 1
-            for i in range (int(maxLengthliste)):
-                item = input(farben.IN + "Passwort"+str(x)+": " + farben.END)
-                item = item.replace(" ","")
-                if  (len(item) > 7) and (item not in liste):
-                    liste.append(item)
-                    x =  x + 1
-                else:
-                    if len(item) < 8:
+        print(farben.IN + "Bitte geben Sie 10 Passwörter ein, die Sie zum Angriff verwenden möchten!" + farben.END)
+        x = 1
+        for i in range (int(maxLengthliste)):
+            item = input(farben.IN + "Passwort"+str(x)+": " + farben.END)
+            item = item.replace(" ","")
+            if  (len(item) > 7) and (item not in liste):
+                liste.append(item)
+                x =  x + 1
+            else:
+                if len(item) < 8:
+                    jumpback()
+                    print (farben.AUF + "Das Passwort ist zu kurz!" + farben.END)
+                    time.sleep(2)
+                    while True:
                         jumpback()
-                        print (farben.AUF + "Das Passwort ist zu kurz!" + farben.END)
-                        time.sleep(2)
-                        while True:
+                        item = input(farben.IN + "Passwort"+ str(x)+": " + farben.END)
+                        item = item.replace(" ","")
+                        if len(item) < 8:
                             jumpback()
-                            item = input(farben.IN + "Passwort"+ str(x)+": " + farben.END)
-                            item = item.replace(" ","")
-                            if len(item) < 8:
-                                jumpback()
-                                print (farben.AUF + "Das Passwort ist zu kurz!" + farben.END)
-                                time.sleep(2)
-                            elif item in liste:
-                                jumpback()
-                                print (farben.AUF + "Das Passwort ist bereits in der Liste!" + farben.END)
-                                time.sleep(2)
-                            else:
-                                liste.append(item)
-                                x = x + 1
-                                break
-                    elif item in liste:
+                            print (farben.AUF + "Das Passwort ist zu kurz!" + farben.END)
+                            time.sleep(2)
+                        elif item in liste:
+                            jumpback()
+                            print (farben.AUF + "Das Passwort ist bereits in der Liste!" + farben.END)
+                            time.sleep(2)
+                        else:
+                            liste.append(item)
+                            x = x + 1
+                            break
+                elif item in liste:
+                    jumpback()
+                    print (farben.AUF + "Das Passwort ist bereits ist der Liste!" + farben.END)
+                    time.sleep(2)
+                    while True:
                         jumpback()
-                        print (farben.AUF + "Das Passwort ist bereits ist der Liste!" + farben.END)
-                        time.sleep(2)
-                        while True:
+                        item = input(farben.IN + "Passwort"+ str(x)+": " + farben.END)
+                        item = item.replace(" ","")
+                        if len(item) < 8:
                             jumpback()
-                            item = input(farben.IN + "Passwort"+ str(x)+": " + farben.END)
-                            item = item.replace(" ","")
-                            if len(item) < 8:
-                                jumpback()
-                                print (farben.AUF + "Das Passwort ist zu kurz!" + farben.END)
-                                time.sleep(2)
-                            elif item in liste:
-                                jumpback()
-                                print (farben.AUF + "Das Passwort ist bereits in der Liste!" + farben.END)
-                                time.sleep(2)
-                            else:
-                                liste.append(item)
-                                x = x + 1
-                                break
-                jumpback()
-            print (farben.IN +"Ihre Passwörter sind: " + farben.AUF + str(liste) + farben.END)
-            time.sleep(11)
-            return
+                            print (farben.AUF + "Das Passwort ist zu kurz!" + farben.END)
+                            time.sleep(2)
+                        elif item in liste:
+                            jumpback()
+                            print (farben.AUF + "Das Passwort ist bereits in der Liste!" + farben.END)
+                            time.sleep(2)
+                        else:
+                            liste.append(item)
+                            x = x + 1
+                            break
+            jumpback()
+        print (farben.IN +"Ihre Passwörter sind: " + farben.AUF + str(liste) + farben.END)
+        time.sleep(11)
+        return
+    else:
+        woerterliste(liste, standardliste, maxLengthliste, jumpback)
     
 # Neukonfiguration / Passwortwechsel
 
