@@ -18,7 +18,7 @@ def jumpback():
 #Auswahl ESSID
 
 def essidwahl(lessid, jumpback):
-    u = subprocess.Popen(["sudo", "python3", "/home/pi/scanner.py"],stdout = subprocess.PIPE, universal_newlines = True)
+    u = subprocess.Popen(["sudo", "python3", "/home/pi/SpyPi/scanner.py"],stdout = subprocess.PIPE, universal_newlines = True)
     out, err = u.communicate()
     out = out.split("\n")    
     for line in out:
@@ -27,9 +27,11 @@ def essidwahl(lessid, jumpback):
 
     print(farben.IN + "Bitte geben Sie die ESSID des anzugreifenden Netzwerks ein..." + farben.END)
     ssid = input(farben.IN + "ESSID: "+ farben.END)
+    ssid = ssid.strip()
+    
     while True:
         for line in out:
-            if not  ssid.startswith(" ") and len(ssid)>0:
+            if len(ssid)>0:
                 if ("%s  " % ssid in line) and ("PSK" in line):
                     os.system('clear')
                     print (farben.IN + "Sie haben " + farben.AUF + ssid + farben.IN + " gewählt. Gutes Hacken!" + farben.END)
@@ -41,19 +43,19 @@ def essidwahl(lessid, jumpback):
         time.sleep(2)
         jumpback()
         ssid = input(farben.IN + "ESSID: "  + farben.END)
-        
 
-def woerterliste(liste, standardliste, maxLengthliste,jumpback):      
+def woerterliste(liste, standardliste, maxLengthliste, jumpback):      
     while True:
-        os.system('clear')
+        os.system('reset')
         print (farben.IN + "Möchten sie Ihre Passwortliste selbst erstellen?" + farben.END)
-        entscheid = input(farben.IN + "J/N? : " + farben.END)
-        if  entscheid == "N" or entscheid =="n":
+        entscheid = input(farben.IN + "J/N? : " + farben.END).lower()
+        
+        if  entscheid == "n":
             randomliste = random.sample(standardliste, 10)
             liste.extend(randomliste)
             return
-        elif entscheid == "J" or entscheid == "j":
-            os.system('clear')
+        elif entscheid == "j":
+            os.system('reset')
             print(farben.IN + "Bitte geben Sie 10 Passwörter ein, die Sie zum Angriff verwenden möchten!" + farben.END)
             x = 1
             for i in range (int(maxLengthliste)):
