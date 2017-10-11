@@ -4,6 +4,7 @@ import RPi.GPIO as GPIO
 import signal
 import MFRC522
 import os
+import sys
 from colors import farben
 
 
@@ -16,6 +17,7 @@ def end_read(signal,frame):
     print "Das Programm wird beendet"
     continue_reading = False
     GPIO.cleanup()
+    sys.exit()
 
 # Funksignale emfangen
 signal.signal(signal.SIGINT, end_read)
@@ -69,14 +71,11 @@ while x < 64:
             # Wenn ja infos speichern
             if status == MIFAREReader.MI_OK:
                 content = "Sektor %s " % x + "Leseschlüssel: " +"{}".format(", ".join(hex(x) for x in k))
-                sector.append(content)
+		print farben.IN + content + farben.END
                 MIFAREReader.MFRC522_StopCrypto1()
                 x = x + 1
 
-
-# Ausgabe der UID und der gefundenen Schlüssel
 print "UID: "+ farben.AUF +str(uid[0])+","+str(uid[1])+","+str(uid[2]) +","+str(uid[3])+","+str(uid[4])  + farben.END
-for item in sector:
-    print farben.IN + item + farben.END
+
 
 
