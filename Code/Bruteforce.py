@@ -57,57 +57,22 @@ def woerterliste(liste, standardliste, maxLengthliste, jumpback):
     elif entscheid == "j":
         os.system('reset')
         print(farben.IN + "Bitte geben Sie 10 Passwörter ein, die Sie zum Angriff verwenden möchten!" + farben.END)
-        x = 1
-        for i in range (int(maxLengthliste)):
-            item = input(farben.IN + "Passwort"+str(x)+": " + farben.END)
+        while len(liste) < maxLengthliste:
+            x = len(liste)
+            item = input(farben.IN + "Passwort"+str(x+1)+": " + farben.END)
             item = item.replace(" ","")
-            if  (len(item) > 7) and (item not in liste):
-                liste.append(item)
-                x =  x + 1
+            if  (len(item) < 8):
+                print("Ihr Passwort ist zu kurz!")
+            elif (item in liste):
+                print ("Ihr Passwort ist bereits in der Liste!")
             else:
-                if len(item) < 8:
-                    jumpback()
-                    print (farben.AUF + "Das Passwort ist zu kurz!" + farben.END)
-                    time.sleep(2)
-                    while True:
-                        jumpback()
-                        item = input(farben.IN + "Passwort"+ str(x)+": " + farben.END)
-                        item = item.replace(" ","")
-                        if len(item) < 8:
-                            jumpback()
-                            print (farben.AUF + "Das Passwort ist zu kurz!" + farben.END)
-                            time.sleep(2)
-                        elif item in liste:
-                            jumpback()
-                            print (farben.AUF + "Das Passwort ist bereits in der Liste!" + farben.END)
-                            time.sleep(2)
-                        else:
-                            liste.append(item)
-                            x = x + 1
-                            break
-                elif item in liste:
-                    jumpback()
-                    print (farben.AUF + "Das Passwort ist bereits ist der Liste!" + farben.END)
-                    time.sleep(2)
-                    while True:
-                        jumpback()
-                        item = input(farben.IN + "Passwort"+ str(x)+": " + farben.END)
-                        item = item.replace(" ","")
-                        if len(item) < 8:
-                            jumpback()
-                            print (farben.AUF + "Das Passwort ist zu kurz!" + farben.END)
-                            time.sleep(2)
-                        elif item in liste:
-                            jumpback()
-                            print (farben.AUF + "Das Passwort ist bereits in der Liste!" + farben.END)
-                            time.sleep(2)
-                        else:
-                            liste.append(item)
-                            x = x + 1
-                            break
+                liste.append(item)
+                print ("Passwort wurde der Liste hinzugefügt.")
+            time.sleep(2)
+            jumpback()
             jumpback()
         print (farben.IN +"Ihre Passwörter sind: " + farben.AUF + str(liste) + farben.END)
-        time.sleep(11)
+        time.sleep(5)
         return
     else:
         woerterliste(liste, standardliste, maxLengthliste, jumpback)
@@ -185,8 +150,8 @@ def wipe():
 #Standardpasswortliste
 
 standardliste = ['12345678', 'hallo123', 'mudeqobixusa', 'passwort', \
-		        'mudeqobixusa', '3rjs1la7qe', '66666666',\
-		        '123456789', 'starwars', 'princess','passwort1', 'arschloch', \
+                'mudeqobixusa', '3rjs1la7qe', '66666666',\
+                '123456789', 'starwars', 'princess','passwort1', 'arschloch', \
                 'judihui', '11111111', 'superman', '123123123', 'schalke04', \
                 'baseball', 'football', '696969', 'trustno1', 'keahnig',
                 'wlanpasswort', 'qwertzui', 'asdfghjk', 'yxcvbnmq', 'jennifer', \
